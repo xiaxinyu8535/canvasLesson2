@@ -11,21 +11,51 @@
 				canvas.width=800
 				canvas.height=800
 				var ctx = canvas.getContext('2d')
+				ctx.rect(0,0,canvas.width,canvas.height)
+				ctx.fillStyle='black'
+				ctx.fill()
 				
-
+				ctx.lineJoin = 'round'
+				for(var i=0;i<200;i++){
+					var r = Math.random()*10 + 10
+					var x = Math.random()*canvas.width
+					var y = Math.random()*canvas.height
+					var rot = Math.random()*90
+					if(x+r>canvas.width){
+						x = x-r
+					}
+					if(x-r<0){
+						x=x+r
+					}
+					if(y+r>canvas.height){
+						y = y-r
+					}
+					if(y-r<0){
+						y=y+r
+					}
+					drawStar(ctx,r/2,r,x,y,rot)
+				}
 				
+				
+			}
+			function drawStar(ctx,r,R,x,y,rot){
+				ctx.beginPath()
+				
+				for(var i=0;i<5;i++){
+					ctx.lineTo(Math.cos((18+i*72-rot)/180*Math.PI)*R+x,
+								-Math.sin((18+i*72-rot)/180*Math.PI)*R+y)
+					ctx.lineTo(Math.cos((54+i*72-rot)/180*Math.PI)*r+x,
+								-Math.sin((54+i*72-rot)/180*Math.PI)*r+y)
+				}
+				ctx.closePath()
+				ctx.fillStyle='#fb3'
+				ctx.strokeStyle='#fd5'
+				ctx.lineWidth=5
+				ctx.lineJoin = 'round'
 
-				ctx.lineWidth=10
-				ctx.fillStyle='red'
-				ctx.strokeStyle = '#058'
+				ctx.fill()
 				ctx.stroke()
-				ctx.fillRect(100,100,400,400)
-				ctx.strokeRect(100,100,400,400)
 				
-				ctx.fillStyle='rgba(50,50,50,0.8)'
-
-				ctx.fillRect(300,300,400,400)
-				ctx.strokeRect(300,300,400,400)
 			}
 		</script>
 		<canvas id='canvas'></canvas>
