@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			window.onload = function(){
+				var canvas = document.getElementById('canvas')
+				canvas.width=800
+				canvas.height=800
+				var ctx = canvas.getContext('2d')
+				
+
+				
+
+				ctx.lineWidth=10
+				ctx.fillStyle='red'
+				ctx.strokeStyle = '#058'
+				ctx.stroke()
+				ctx.fillRect(100,100,400,400)
+				ctx.strokeRect(100,100,400,400)
+				
+				ctx.fillStyle='rgba(50,50,50,0.8)'
+
+				ctx.fillRect(300,300,400,400)
+				ctx.strokeRect(300,300,400,400)
+			}
+		</script>
+		<canvas id='canvas'></canvas>
+	</body>
+</html>
